@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="cn5-gurGUvjtlzniBhOIPjfKHzuAplh_R9Ju9tuL0DM" />
+
+  <!-- Twitter and Facebook OpenGraph Metadata-->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@code" />
+
+  <meta itemprop="applicationCategory" content="Text Editor">
+  <meta itemprop="datePublished" content="2016-04-14">
+  <meta itemprop="operatingSystem" content="Mac, Linux, Windows" />
+
+  
+<meta name="description" content="Find out how to set-up and get the most from Visual Studio Code.  Optimized for building and debugging modern web and cloud applications.  Visual Studio Code is free and available on your favorite platform - Linux, macOS, and Windows."
+/>
+
+<!-- Twitter and Facebook OpenGraph Metadata-->		
+<meta property="og:title" content="Documentation for Visual Studio Code"/>		
+<meta property="og:description" content="Find out how to set-up and get the most from Visual Studio Code.  Optimized for building and debugging modern web and cloud applications.  Visual Studio Code is free and available on your favorite platform - Linux, macOS, and Windows."/>		
+<meta property="og:image" content="https://code.visualstudio.com/opengraphimg/opengraph-gettingstarted.png"/>		
+<meta property="og:url" content="https://code.visualstudio.com/docs"/>	
+<link href="https://code.visualstudio.com/docs" rel="canonical" />	
+
+
+  <link rel="shortcut icon" href="/favicon.ico" sizes="128x128" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <title>Documentation for Visual Studio Code</title>
+
+  <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  <!-- EU Cookie Compliance CSS -->
+  <link rel="stylesheet" href="//uhf.microsoft.com/mscc/statics/mscc-0.3.6.min.css">
+  <link rel="stylesheet" href="/dist/style.css">
+
+  <!--Google Analytics-->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  </script>
+  <!-- End Google Analytics -->
+  
+  <!-- Global site tag (gtag.js) - Google AdWords: 881159895 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-881159895"></script>
+  <script>
+  function loadGA () {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-881159895');
+    window.gtag = gtag;
+  }
+  
+  if (document.cookie.indexOf('MSCC=') !== -1) {
+    loadGA();
+  } else {
+    if (mscc && mscc.on) {
+      mscc.on('consent', function () {
+        loadGA();
+      })
+    }
+  }
+  </script>
+  <script src="https://az725175.vo.msecnd.net/scripts/jsll-4.js" type="text/javascript"></script>
+  
+  <link rel="alternate" type="application/atom+xml" title="RSS Feed for code.visualstudio.com" href="/feed.xml" />
+</head>
+
+<body>
+  <!-- EU Cookie Compliance JS -->
+  <script src="//uhf.microsoft.com/mscc/statics/mscc-0.3.6.min.js"></script>
+
+  <div id='mscc-cookie-container'>
+    <div id='msccBanner' dir='ltr' data-site-name='uhf-vscode' data-mscc-version='0.3.4' data-nver='aspnet-2.0.5' data-sver='0.1.2' class='cc-banner' role='alert'>
+      <div class='cc-container'>
+        <svg class='cc-icon cc-v-center' x='0px' y='0px' viewBox='0 0 44 44' height='30px' fill='none' stroke='currentColor'>
+          <circle cx='22' cy='22' r='20' stroke-width='2'></circle>
+          <line x1='22' x2='22' y1='18' y2='33' stroke-width='3'></line>
+          <line x1='22' x2='22' y1='12' y2='15' stroke-width='3'></line>
+          </svg>
+            <span class='cc-v-center cc-text'>This site uses cookies for analytics, personalized content and ads. By continuing to browse this site, you agree to this use.</span>
+            <a
+              href='https://go.microsoft.com/fwlink/?linkid=845480'
+              aria-label='Learn more about Microsoft’s Cookie Policy'
+              id='msccLearnMore'
+              data-mscc-ic="false"
+              class='cc-link cc-v-center cc-float-right'
+            >Learn more</a>
+      </div>
+    </div>
+  </div>
+  <div id="main" itemscope itemtype="http://schema.org/SoftwareApplication">
+          <a role="button" id="skip-to-content" class="link-button" href="#main-content">Skip to content<i>&nbsp;</i><span class="glyphicon glyphicon-menu-down"></span></a>
+          <div class="navbar-fixed-container">
+              <div class="navbar navbar-inverse navbar-fixed-top ">
+                  <nav role="navigation" aria-label="Top Level">
+                      <div class="container">
+                          <div class="nav navbar-header">
+                              <a class="navbar-brand" href="/"><span itemprop="name">Visual Studio Code</span></a>
+                              <button type="button" class="navbar-toggle" role="navigation" data-toggle="collapse" data-target=".navbar-collapse" aria-label="Toggle Navigation Menu">
+                                  <span class="icon-bar"></span>
+                                  <span class="icon-bar"></span>
+                                  <span class="icon-bar"></span>
+                              </button>
+                          </div>
+                          <div class="navbar-collapse collapse" role="navigation">
+                              <ul class="nav navbar-nav navbar-left">
+                                  <li class="active" ><a id="nav-docs" href="/docs">Docs</a></li>
+                                  <li ><a id="nav-updates" href="/updates">Updates</a></li>
+                                  <li ><a id="nav-blogs" href="/blogs">Blog</a></li>
+                                  <li ><a id="nav-extend" href="/api">API</a></li>
+                                  <li><a href="https://marketplace.visualstudio.com/VSCode" target="_blank" id="nav-extensions">Extensions</a></li>
+                                  <li ><a id="nav-faqs" href="/docs/supporting/faq">FAQ</a></li>
+                                  <li class='search visible-xs'
+                                      ><a href="/Search">Search</a></li>
+          	                    <li class="visible-xs"><a href="/Download">Download</a></li>
+                              </ul>
+          
+                              <ul class="nav navbar-nav navbar-right">
+                                  <!-- Floating search icon -->
+                                  <li>
+                                      <a href="/Search" title="Search" class="btn search-btn" id="nav-search">
+                                          <img class="search-icon" src="/assets/icons/search.svg" width="16px" height="16px" alt="Search"/>
+                                          <img class="search-icon-inverted" src="/assets/icons/search_dark.svg" width="16px" height="16px" alt="Search" />
+                                      </a>
+                                  </li>
+                                  <!-- Actual search icon -->
+                                  <li class="search">
+                                      <form class="nav-search search-form" aria-label="Search"> 
+                                          <div class="input-group">
+                                              <input type="text" name="q" class="search-box form-control" placeholder="Search Docs" aria-label="Search text"/>
+                                              <span class="input-group-btn">
+                                                  <button tabindex="0" class="btn" type="submit" aria-label="Search">
+                                                          <img class="search-icon" src="/assets/icons/search.svg" width="16px" height="16px" alt="Search" />
+                                                          <img class="search-icon-inverted" src="/assets/icons/search_dark.svg" width="16px" height="16px" alt="Search" />
+                                                  </button>
+                                              </span>
+                                          </div>
+                                      </form>                        </li>
+                                  <!-- this was hiden in the home and download page, keeping it for now -->
+                                  <li><a itemprop="downloadUrl" class="link-button" href="/Download" id="nav-download">
+                                      <img class="download-icon" src="/assets/icons/download.svg" width="16px" height="16px" alt="Download VS Code"/>
+                                      <img class="download-icon-inverted" src="/assets/icons/download-black.svg" width="16px" height="16px" alt="Download VS Code" />
+                                      <span class="hidden-sm">Download</span>
+                                  </a></li>
+                              </ul>
+                          </div>
+                      </div>
+                  </nav>
+              </div>
+          </div>          <div class="updates-banner  ">
+              <div class="container">
+                  <p class="message"><a href="/updates" id="banner-link-updates">Version <span itemprop="softwareVersion">1.48</span></a> is now available! Read about the new features and fixes from July.</p>
+              </div>
+              <div tabindex="0" role="button" title="Dismiss this update" class="dismiss-btn" id="banner-dismiss-btn"><span class="sr-only">Dismiss this update</span><span aria-hidden="true" class="glyph-icon"></span></div>
+          </div>      <div role="main" id="main-content">
+        <div class="container body-content docs">
+    <div class="row">
+        <div class="col-md-2 docs-navbar-container"> <nav id="docs-navbar" aria-label="Topics" class="docs-nav visible-md visible-lg">
+	<ul class="nav" id="main-nav">
+		<li class="active">
+			<a class="docs-home" href="/docs" aria-label="Current Page: VS Code Documentation Overview">Overview</a>
+		</li>
+		
+			
+		
+			
+				<li class="panel collapsed">
+					<a class="area" aria-label="Setup drop down" href="#setup-articles" data-parent="#main-nav" data-toggle="collapse">Setup</a>
+					<ul id="setup-articles" class="collapse ">
+					
+						<li >
+							<a href="/docs/setup/setup-overview" >Overview</a>
+						</li>
+					
+						<li >
+							<a href="/docs/setup/linux" >Linux</a>
+						</li>
+					
+						<li >
+							<a href="/docs/setup/mac" >macOS</a>
+						</li>
+					
+						<li >
+							<a href="/docs/setup/windows" >Windows</a>
+						</li>
+					
+						<li >
+							<a href="/docs/setup/network" >Network</a>
+						</li>
+					
+						<li >
+							<a href="/docs/setup/additional-components" >Additional Components</a>
+						</li>
+					
+					</ul>
+				</li>
+			
+		
+			
+				<li class="panel collapsed">
+					<a class="area" aria-label="Get Started drop down" href="#getstarted-articles" data-parent="#main-nav" data-toggle="collapse">Get Started</a>
+					<ul id="getstarted-articles" class="collapse ">
+					
+						<li >
+							<a href="/docs/getstarted/introvideos" >Intro Videos</a>
+						</li>
+					
+						<li >
+							<a href="/docs/getstarted/tips-and-tricks" >Tips and Tricks</a>
+						</li>
+					
+						<li >
+							<a href="/docs/getstarted/userinterface" >User Interface</a>
+						</li>
+					
+						<li >
+							<a href="/docs/getstarted/themes" >Themes</a>
+						</li>
+					
+						<li >
+							<a href="/docs/getstarted/settings" >Settings</a>
+						</li>
+					
+						<li >
+							<a href="/docs/getstarted/keybindings" >Key Bindings</a>
+						</li>
+					
+						<li >
+							<a href="/docs/getstarted/locales" >Display Language</a>
+						</li>
+					
+						<li >
+							<a href="/docs/getstarted/telemetry" >Telemetry</a>
+						</li>
+					
+					</ul>
+				</li>
+			
+		
+			
+				<li class="panel collapsed">
+					<a class="area" aria-label="User Guide drop down" href="#editor-articles" data-parent="#main-nav" data-toggle="collapse">User Guide</a>
+					<ul id="editor-articles" class="collapse ">
+					
+						<li >
+							<a href="/docs/editor/codebasics" >Basic Editing</a>
+						</li>
+					
+						<li >
+							<a href="/docs/editor/extension-gallery" >Extension Marketplace</a>
+						</li>
+					
+						<li >
+							<a href="/docs/editor/intellisense" >IntelliSense</a>
+						</li>
+					
+						<li >
+							<a href="/docs/editor/editingevolved" >Code Navigation</a>
+						</li>
+					
+						<li >
+							<a href="/docs/editor/refactoring" >Refactoring</a>
+						</li>
+					
+						<li >
+							<a href="/docs/editor/debugging" >Debugging</a>
+						</li>
+					
+						<li >
+							<a href="/docs/editor/versioncontrol" >Version Control</a>
+						</li>
+					
+						<li >
+							<a href="/docs/editor/github" >Working with GitHub</a>
+						</li>
+					
+						<li >
+							<a href="/docs/editor/integrated-terminal" >Integrated Terminal</a>
+						</li>
+					
+						<li >
+							<a href="/docs/editor/tasks" >Tasks</a>
+						</li>
+					
+						<li >
+							<a href="/docs/editor/settings-sync" >Settings Sync</a>
+						</li>
+					
+						<li >
+							<a href="/docs/editor/userdefinedsnippets" >Snippets</a>
+						</li>
+					
+						<li >
+							<a href="/docs/editor/emmet" >Emmet</a>
+						</li>
+					
+						<li >
+							<a href="/docs/editor/command-line" >Command Line</a>
+						</li>
+					
+						<li >
+							<a href="/docs/editor/multi-root-workspaces" >Multi-root Workspaces</a>
+						</li>
+					
+						<li >
+							<a href="/docs/editor/accessibility" >Accessibility</a>
+						</li>
+					
+					</ul>
+				</li>
+			
+		
+			
+				<li class="panel collapsed">
+					<a class="area" aria-label="Languages drop down" href="#languages-articles" data-parent="#main-nav" data-toggle="collapse">Languages</a>
+					<ul id="languages-articles" class="collapse ">
+					
+						<li >
+							<a href="/docs/languages/overview" >Overview</a>
+						</li>
+					
+						<li >
+							<a href="/docs/languages/javascript" >JavaScript</a>
+						</li>
+					
+						<li >
+							<a href="/docs/languages/json" >JSON</a>
+						</li>
+					
+						<li >
+							<a href="/docs/languages/html" >HTML</a>
+						</li>
+					
+						<li >
+							<a href="/docs/languages/css" >CSS, SCSS and Less</a>
+						</li>
+					
+						<li >
+							<a href="/docs/languages/typescript" >TypeScript</a>
+						</li>
+					
+						<li >
+							<a href="/docs/languages/markdown" >Markdown</a>
+						</li>
+					
+						<li >
+							<a href="/docs/languages/powershell" >PowerShell</a>
+						</li>
+					
+						<li >
+							<a href="/docs/languages/cpp" >C++</a>
+						</li>
+					
+						<li >
+							<a href="/docs/languages/java" >Java</a>
+						</li>
+					
+						<li >
+							<a href="/docs/languages/php" >PHP</a>
+						</li>
+					
+						<li >
+							<a href="/docs/languages/python" >Python</a>
+						</li>
+					
+						<li >
+							<a href="/docs/languages/go" >Go</a>
+						</li>
+					
+						<li >
+							<a href="/docs/languages/tsql" >T-SQL</a>
+						</li>
+					
+						<li >
+							<a href="/docs/languages/csharp" >C#</a>
+						</li>
+					
+						<li >
+							<a href="/docs/languages/dotnet" >.NET Core</a>
+						</li>
+					
+					</ul>
+				</li>
+			
+		
+			
+				<li class="panel collapsed">
+					<a class="area" aria-label="Node.js / JavaScript drop down" href="#nodejs-articles" data-parent="#main-nav" data-toggle="collapse">Node.js / JavaScript</a>
+					<ul id="nodejs-articles" class="collapse ">
+					
+						<li >
+							<a href="/docs/nodejs/working-with-javascript" >Working with JavaScript</a>
+						</li>
+					
+						<li >
+							<a href="/docs/nodejs/nodejs-tutorial" >Node.js Tutorial</a>
+						</li>
+					
+						<li >
+							<a href="/docs/nodejs/nodejs-debugging" >Node.js Debugging</a>
+						</li>
+					
+						<li >
+							<a href="/docs/nodejs/nodejs-deployment" >Node.js Deployment</a>
+						</li>
+					
+						<li >
+							<a href="/docs/nodejs/reactjs-tutorial" >React Tutorial</a>
+						</li>
+					
+						<li >
+							<a href="/docs/nodejs/angular-tutorial" >Angular Tutorial</a>
+						</li>
+					
+						<li >
+							<a href="/docs/nodejs/vuejs-tutorial" >Vue Tutorial</a>
+						</li>
+					
+						<li >
+							<a href="/docs/nodejs/emberjs-tutorial" >Ember Tutorial</a>
+						</li>
+					
+						<li >
+							<a href="/docs/nodejs/debugging-recipes" >Debugging Recipes</a>
+						</li>
+					
+						<li >
+							<a href="/docs/nodejs/extensions" >Extensions</a>
+						</li>
+					
+					</ul>
+				</li>
+			
+		
+			
+				<li class="panel collapsed">
+					<a class="area" aria-label="TypeScript drop down" href="#typescript-articles" data-parent="#main-nav" data-toggle="collapse">TypeScript</a>
+					<ul id="typescript-articles" class="collapse ">
+					
+						<li >
+							<a href="/docs/typescript/typescript-tutorial" >Tutorial</a>
+						</li>
+					
+						<li >
+							<a href="/docs/typescript/typescript-compiling" >Compiling</a>
+						</li>
+					
+						<li >
+							<a href="/docs/typescript/typescript-debugging" >Debugging</a>
+						</li>
+					
+					</ul>
+				</li>
+			
+		
+			
+				<li class="panel collapsed">
+					<a class="area" aria-label="Python drop down" href="#python-articles" data-parent="#main-nav" data-toggle="collapse">Python</a>
+					<ul id="python-articles" class="collapse ">
+					
+						<li >
+							<a href="/docs/python/python-tutorial" >Tutorial</a>
+						</li>
+					
+						<li >
+							<a href="/docs/python/editing" >Editing Code</a>
+						</li>
+					
+						<li >
+							<a href="/docs/python/linting" >Linting</a>
+						</li>
+					
+						<li >
+							<a href="/docs/python/debugging" >Debugging</a>
+						</li>
+					
+						<li >
+							<a href="/docs/python/environments" >Environments</a>
+						</li>
+					
+						<li >
+							<a href="/docs/python/testing" >Testing</a>
+						</li>
+					
+						<li >
+							<a href="/docs/python/jupyter-support" >Jupyter Notebook Support</a>
+						</li>
+					
+						<li >
+							<a href="/docs/python/jupyter-support-py" >Python Interactive</a>
+						</li>
+					
+						<li >
+							<a href="/docs/python/data-science-tutorial" >Data Science Tutorial</a>
+						</li>
+					
+						<li >
+							<a href="/docs/python/tutorial-django" >Django Tutorial</a>
+						</li>
+					
+						<li >
+							<a href="/docs/python/tutorial-flask" >Flask Tutorial</a>
+						</li>
+					
+						<li >
+							<a href="/docs/python/tutorial-create-containers" >Create containers</a>
+						</li>
+					
+						<li >
+							<a href="/docs/python/python-on-azure" >Python on Azure</a>
+						</li>
+					
+						<li >
+							<a href="/docs/python/settings-reference" >Settings Reference</a>
+						</li>
+					
+					</ul>
+				</li>
+			
+		
+			
+				<li class="panel collapsed">
+					<a class="area" aria-label="Java drop down" href="#java-articles" data-parent="#main-nav" data-toggle="collapse">Java</a>
+					<ul id="java-articles" class="collapse ">
+					
+						<li >
+							<a href="/docs/java/java-tutorial" >Getting Started</a>
+						</li>
+					
+						<li >
+							<a href="/docs/java/java-editing" >Navigate and Edit</a>
+						</li>
+					
+						<li >
+							<a href="/docs/java/java-refactoring" >Refactoring</a>
+						</li>
+					
+						<li >
+							<a href="/docs/java/java-linting" >Linting</a>
+						</li>
+					
+						<li >
+							<a href="/docs/java/java-project" >Project Management</a>
+						</li>
+					
+						<li >
+							<a href="/docs/java/java-build" >Build Tools</a>
+						</li>
+					
+						<li >
+							<a href="/docs/java/java-debugging" >Run and Debug</a>
+						</li>
+					
+						<li >
+							<a href="/docs/java/java-testing" >Testing</a>
+						</li>
+					
+						<li >
+							<a href="/docs/java/java-spring-boot" >Spring Boot</a>
+						</li>
+					
+						<li >
+							<a href="/docs/java/java-tomcat-jetty" >Application Servers</a>
+						</li>
+					
+						<li >
+							<a href="/docs/java/java-on-azure" >Java on Azure</a>
+						</li>
+					
+						<li >
+							<a href="/docs/java/extensions" >Extensions</a>
+						</li>
+					
+						<li >
+							<a href="/docs/java/java-faq" >FAQ</a>
+						</li>
+					
+					</ul>
+				</li>
+			
+		
+			
+				<li class="panel collapsed">
+					<a class="area" aria-label="C++ drop down" href="#cpp-articles" data-parent="#main-nav" data-toggle="collapse">C++</a>
+					<ul id="cpp-articles" class="collapse ">
+					
+						<li >
+							<a href="/docs/cpp/config-linux" >GCC on Linux</a>
+						</li>
+					
+						<li >
+							<a href="/docs/cpp/config-mingw" >GCC on Windows</a>
+						</li>
+					
+						<li >
+							<a href="/docs/cpp/config-wsl" >GCC on Windows Subsystem for Linux</a>
+						</li>
+					
+						<li >
+							<a href="/docs/cpp/config-clang-mac" >Clang on macOS</a>
+						</li>
+					
+						<li >
+							<a href="/docs/cpp/config-msvc" >Microsoft C++ on Windows</a>
+						</li>
+					
+						<li >
+							<a href="/docs/cpp/cmake-linux" >CMake Tools on Linux</a>
+						</li>
+					
+						<li >
+							<a href="/docs/cpp/cpp-debug" >Debugging</a>
+						</li>
+					
+						<li >
+							<a href="/docs/cpp/cpp-ide" >Editing</a>
+						</li>
+					
+						<li >
+							<a href="/docs/cpp/customize-default-settings-cpp" >Settings</a>
+						</li>
+					
+						<li >
+							<a href="/docs/cpp/configure-intellisense-crosscompilation" >Configure IntelliSense for cross-compiling</a>
+						</li>
+					
+						<li >
+							<a href="/docs/cpp/faq-cpp" >FAQ</a>
+						</li>
+					
+					</ul>
+				</li>
+			
+		
+			
+				<li class="panel collapsed">
+					<a class="area" aria-label="Containers drop down" href="#containers-articles" data-parent="#main-nav" data-toggle="collapse">Containers</a>
+					<ul id="containers-articles" class="collapse ">
+					
+						<li >
+							<a href="/docs/containers/overview" >Overview</a>
+						</li>
+					
+						<li >
+							<a href="/docs/containers/quickstart-node" >Node.js</a>
+						</li>
+					
+						<li >
+							<a href="/docs/containers/quickstart-python" >Python</a>
+						</li>
+					
+						<li >
+							<a href="/docs/containers/quickstart-aspnet-core" >ASP.NET Core</a>
+						</li>
+					
+						<li >
+							<a href="/docs/containers/debug-common" >Debug</a>
+						</li>
+					
+						<li >
+							<a href="/docs/containers/docker-compose" >Docker Compose</a>
+						</li>
+					
+						<li >
+							<a href="/docs/containers/quickstart-container-registries" >Registries</a>
+						</li>
+					
+						<li >
+							<a href="/docs/containers/app-service" >Deploy to Azure</a>
+						</li>
+					
+						<li >
+							<a href="/docs/containers/choosing-dev-environment" >Choose a dev environment</a>
+						</li>
+					
+						<li >
+							<a href="/docs/containers/reference" >Customize</a>
+						</li>
+					
+						<li >
+							<a href="/docs/containers/local-process-kubernetes" >Develop with Kubernetes</a>
+						</li>
+					
+					</ul>
+				</li>
+			
+		
+			
+				<li class="panel collapsed">
+					<a class="area" aria-label="Azure drop down" href="#azure-articles" data-parent="#main-nav" data-toggle="collapse">Azure</a>
+					<ul id="azure-articles" class="collapse ">
+					
+						<li >
+							<a href="/docs/azure/extensions" >Extensions</a>
+						</li>
+					
+						<li >
+							<a href="/docs/azure/deployment" >Deployment</a>
+						</li>
+					
+						<li >
+							<a href="/docs/azure/remote-debugging" >Remote Debugging for Node.js</a>
+						</li>
+					
+						<li >
+							<a href="/docs/azure/docker" >Docker</a>
+						</li>
+					
+						<li >
+							<a href="/docs/azure/mongodb" >MongoDB</a>
+						</li>
+					
+						<li >
+							<a href="/docs/azure/kubernetes" >Kubernetes</a>
+						</li>
+					
+						<li >
+							<a href="/docs/azure/tryappservice" >Try Azure App Service</a>
+						</li>
+					
+					</ul>
+				</li>
+			
+		
+			
+				<li class="panel collapsed">
+					<a class="area" aria-label="Remote drop down" href="#remote-articles" data-parent="#main-nav" data-toggle="collapse">Remote</a>
+					<ul id="remote-articles" class="collapse ">
+					
+						<li >
+							<a href="/docs/remote/remote-overview" >Overview</a>
+						</li>
+					
+						<li >
+							<a href="/docs/remote/ssh" >SSH</a>
+						</li>
+					
+						<li >
+							<a href="/docs/remote/containers" >Containers</a>
+						</li>
+					
+						<li >
+							<a href="/docs/remote/wsl" >Windows Subsystem for Linux</a>
+						</li>
+					
+						<li >
+							<a href="/docs/remote/codespaces" >Visual Studio Codespaces</a>
+						</li>
+					
+						<li >
+							<a href="/docs/remote/ssh-tutorial" >SSH Tutorial</a>
+						</li>
+					
+						<li >
+							<a href="/docs/remote/containers-tutorial" >Containers Tutorial</a>
+						</li>
+					
+						<li >
+							<a href="/docs/remote/wsl-tutorial" >WSL Tutorial</a>
+						</li>
+					
+						<li >
+							<a href="/docs/remote/attach-container" >Attach to Container</a>
+						</li>
+					
+						<li >
+							<a href="/docs/remote/create-dev-container" >Create a Dev Container</a>
+						</li>
+					
+						<li >
+							<a href="/docs/remote/containers-advanced" >Advanced Containers</a>
+						</li>
+					
+						<li >
+							<a href="/docs/remote/devcontainerjson-reference" >devcontainer.json</a>
+						</li>
+					
+						<li >
+							<a href="/docs/remote/troubleshooting" >Tips and Tricks</a>
+						</li>
+					
+						<li >
+							<a href="/docs/remote/faq" >FAQ</a>
+						</li>
+					
+					</ul>
+				</li>
+			
+		
+			
+		
+	</ul>
+</nav>
+<nav id="small-nav" aria-label="Topics" class="docs-nav hidden-md hidden-lg">
+	<h4>Topics</h4>
+	<select id="small-nav-dropdown">
+		<option value="/docs" >Overview</option>
+		
+			
+		
+			
+				<optgroup label="Setup">
+				
+					<option value="/docs/setup/setup-overview" >Overview</option>
+				
+					<option value="/docs/setup/linux" >Linux</option>
+				
+					<option value="/docs/setup/mac" >macOS</option>
+				
+					<option value="/docs/setup/windows" >Windows</option>
+				
+					<option value="/docs/setup/network" >Network</option>
+				
+					<option value="/docs/setup/additional-components" >Additional Components</option>
+				
+				</optgroup>
+			
+		
+			
+				<optgroup label="Get Started">
+				
+					<option value="/docs/getstarted/introvideos" >Intro Videos</option>
+				
+					<option value="/docs/getstarted/tips-and-tricks" >Tips and Tricks</option>
+				
+					<option value="/docs/getstarted/userinterface" >User Interface</option>
+				
+					<option value="/docs/getstarted/themes" >Themes</option>
+				
+					<option value="/docs/getstarted/settings" >Settings</option>
+				
+					<option value="/docs/getstarted/keybindings" >Key Bindings</option>
+				
+					<option value="/docs/getstarted/locales" >Display Language</option>
+				
+					<option value="/docs/getstarted/telemetry" >Telemetry</option>
+				
+				</optgroup>
+			
+		
+			
+				<optgroup label="User Guide">
+				
+					<option value="/docs/editor/codebasics" >Basic Editing</option>
+				
+					<option value="/docs/editor/extension-gallery" >Extension Marketplace</option>
+				
+					<option value="/docs/editor/intellisense" >IntelliSense</option>
+				
+					<option value="/docs/editor/editingevolved" >Code Navigation</option>
+				
+					<option value="/docs/editor/refactoring" >Refactoring</option>
+				
+					<option value="/docs/editor/debugging" >Debugging</option>
+				
+					<option value="/docs/editor/versioncontrol" >Version Control</option>
+				
+					<option value="/docs/editor/github" >Working with GitHub</option>
+				
+					<option value="/docs/editor/integrated-terminal" >Integrated Terminal</option>
+				
+					<option value="/docs/editor/tasks" >Tasks</option>
+				
+					<option value="/docs/editor/settings-sync" >Settings Sync</option>
+				
+					<option value="/docs/editor/userdefinedsnippets" >Snippets</option>
+				
+					<option value="/docs/editor/emmet" >Emmet</option>
+				
+					<option value="/docs/editor/command-line" >Command Line</option>
+				
+					<option value="/docs/editor/multi-root-workspaces" >Multi-root Workspaces</option>
+				
+					<option value="/docs/editor/accessibility" >Accessibility</option>
+				
+				</optgroup>
+			
+		
+			
+				<optgroup label="Languages">
+				
+					<option value="/docs/languages/overview" >Overview</option>
+				
+					<option value="/docs/languages/javascript" >JavaScript</option>
+				
+					<option value="/docs/languages/json" >JSON</option>
+				
+					<option value="/docs/languages/html" >HTML</option>
+				
+					<option value="/docs/languages/css" >CSS, SCSS and Less</option>
+				
+					<option value="/docs/languages/typescript" >TypeScript</option>
+				
+					<option value="/docs/languages/markdown" >Markdown</option>
+				
+					<option value="/docs/languages/powershell" >PowerShell</option>
+				
+					<option value="/docs/languages/cpp" >C++</option>
+				
+					<option value="/docs/languages/java" >Java</option>
+				
+					<option value="/docs/languages/php" >PHP</option>
+				
+					<option value="/docs/languages/python" >Python</option>
+				
+					<option value="/docs/languages/go" >Go</option>
+				
+					<option value="/docs/languages/tsql" >T-SQL</option>
+				
+					<option value="/docs/languages/csharp" >C#</option>
+				
+					<option value="/docs/languages/dotnet" >.NET Core</option>
+				
+				</optgroup>
+			
+		
+			
+				<optgroup label="Node.js / JavaScript">
+				
+					<option value="/docs/nodejs/working-with-javascript" >Working with JavaScript</option>
+				
+					<option value="/docs/nodejs/nodejs-tutorial" >Node.js Tutorial</option>
+				
+					<option value="/docs/nodejs/nodejs-debugging" >Node.js Debugging</option>
+				
+					<option value="/docs/nodejs/nodejs-deployment" >Node.js Deployment</option>
+				
+					<option value="/docs/nodejs/reactjs-tutorial" >React Tutorial</option>
+				
+					<option value="/docs/nodejs/angular-tutorial" >Angular Tutorial</option>
+				
+					<option value="/docs/nodejs/vuejs-tutorial" >Vue Tutorial</option>
+				
+					<option value="/docs/nodejs/emberjs-tutorial" >Ember Tutorial</option>
+				
+					<option value="/docs/nodejs/debugging-recipes" >Debugging Recipes</option>
+				
+					<option value="/docs/nodejs/extensions" >Extensions</option>
+				
+				</optgroup>
+			
+		
+			
+				<optgroup label="TypeScript">
+				
+					<option value="/docs/typescript/typescript-tutorial" >Tutorial</option>
+				
+					<option value="/docs/typescript/typescript-compiling" >Compiling</option>
+				
+					<option value="/docs/typescript/typescript-debugging" >Debugging</option>
+				
+				</optgroup>
+			
+		
+			
+				<optgroup label="Python">
+				
+					<option value="/docs/python/python-tutorial" >Tutorial</option>
+				
+					<option value="/docs/python/editing" >Editing Code</option>
+				
+					<option value="/docs/python/linting" >Linting</option>
+				
+					<option value="/docs/python/debugging" >Debugging</option>
+				
+					<option value="/docs/python/environments" >Environments</option>
+				
+					<option value="/docs/python/testing" >Testing</option>
+				
+					<option value="/docs/python/jupyter-support" >Jupyter Notebook Support</option>
+				
+					<option value="/docs/python/jupyter-support-py" >Python Interactive</option>
+				
+					<option value="/docs/python/data-science-tutorial" >Data Science Tutorial</option>
+				
+					<option value="/docs/python/tutorial-django" >Django Tutorial</option>
+				
+					<option value="/docs/python/tutorial-flask" >Flask Tutorial</option>
+				
+					<option value="/docs/python/tutorial-create-containers" >Create containers</option>
+				
+					<option value="/docs/python/python-on-azure" >Python on Azure</option>
+				
+					<option value="/docs/python/settings-reference" >Settings Reference</option>
+				
+				</optgroup>
+			
+		
+			
+				<optgroup label="Java">
+				
+					<option value="/docs/java/java-tutorial" >Getting Started</option>
+				
+					<option value="/docs/java/java-editing" >Navigate and Edit</option>
+				
+					<option value="/docs/java/java-refactoring" >Refactoring</option>
+				
+					<option value="/docs/java/java-linting" >Linting</option>
+				
+					<option value="/docs/java/java-project" >Project Management</option>
+				
+					<option value="/docs/java/java-build" >Build Tools</option>
+				
+					<option value="/docs/java/java-debugging" >Run and Debug</option>
+				
+					<option value="/docs/java/java-testing" >Testing</option>
+				
+					<option value="/docs/java/java-spring-boot" >Spring Boot</option>
+				
+					<option value="/docs/java/java-tomcat-jetty" >Application Servers</option>
+				
+					<option value="/docs/java/java-on-azure" >Java on Azure</option>
+				
+					<option value="/docs/java/extensions" >Extensions</option>
+				
+					<option value="/docs/java/java-faq" >FAQ</option>
+				
+				</optgroup>
+			
+		
+			
+				<optgroup label="C++">
+				
+					<option value="/docs/cpp/config-linux" >GCC on Linux</option>
+				
+					<option value="/docs/cpp/config-mingw" >GCC on Windows</option>
+				
+					<option value="/docs/cpp/config-wsl" >GCC on Windows Subsystem for Linux</option>
+				
+					<option value="/docs/cpp/config-clang-mac" >Clang on macOS</option>
+				
+					<option value="/docs/cpp/config-msvc" >Microsoft C++ on Windows</option>
+				
+					<option value="/docs/cpp/cmake-linux" >CMake Tools on Linux</option>
+				
+					<option value="/docs/cpp/cpp-debug" >Debugging</option>
+				
+					<option value="/docs/cpp/cpp-ide" >Editing</option>
+				
+					<option value="/docs/cpp/customize-default-settings-cpp" >Settings</option>
+				
+					<option value="/docs/cpp/configure-intellisense-crosscompilation" >Configure IntelliSense for cross-compiling</option>
+				
+					<option value="/docs/cpp/faq-cpp" >FAQ</option>
+				
+				</optgroup>
+			
+		
+			
+				<optgroup label="Containers">
+				
+					<option value="/docs/containers/overview" >Overview</option>
+				
+					<option value="/docs/containers/quickstart-node" >Node.js</option>
+				
+					<option value="/docs/containers/quickstart-python" >Python</option>
+				
+					<option value="/docs/containers/quickstart-aspnet-core" >ASP.NET Core</option>
+				
+					<option value="/docs/containers/debug-common" >Debug</option>
+				
+					<option value="/docs/containers/docker-compose" >Docker Compose</option>
+				
+					<option value="/docs/containers/quickstart-container-registries" >Registries</option>
+				
+					<option value="/docs/containers/app-service" >Deploy to Azure</option>
+				
+					<option value="/docs/containers/choosing-dev-environment" >Choose a dev environment</option>
+				
+					<option value="/docs/containers/reference" >Customize</option>
+				
+					<option value="/docs/containers/local-process-kubernetes" >Develop with Kubernetes</option>
+				
+				</optgroup>
+			
+		
+			
+				<optgroup label="Azure">
+				
+					<option value="/docs/azure/extensions" >Extensions</option>
+				
+					<option value="/docs/azure/deployment" >Deployment</option>
+				
+					<option value="/docs/azure/remote-debugging" >Remote Debugging for Node.js</option>
+				
+					<option value="/docs/azure/docker" >Docker</option>
+				
+					<option value="/docs/azure/mongodb" >MongoDB</option>
+				
+					<option value="/docs/azure/kubernetes" >Kubernetes</option>
+				
+					<option value="/docs/azure/tryappservice" >Try Azure App Service</option>
+				
+				</optgroup>
+			
+		
+			
+				<optgroup label="Remote">
+				
+					<option value="/docs/remote/remote-overview" >Overview</option>
+				
+					<option value="/docs/remote/ssh" >SSH</option>
+				
+					<option value="/docs/remote/containers" >Containers</option>
+				
+					<option value="/docs/remote/wsl" >Windows Subsystem for Linux</option>
+				
+					<option value="/docs/remote/codespaces" >Visual Studio Codespaces</option>
+				
+					<option value="/docs/remote/ssh-tutorial" >SSH Tutorial</option>
+				
+					<option value="/docs/remote/containers-tutorial" >Containers Tutorial</option>
+				
+					<option value="/docs/remote/wsl-tutorial" >WSL Tutorial</option>
+				
+					<option value="/docs/remote/attach-container" >Attach to Container</option>
+				
+					<option value="/docs/remote/create-dev-container" >Create a Dev Container</option>
+				
+					<option value="/docs/remote/containers-advanced" >Advanced Containers</option>
+				
+					<option value="/docs/remote/devcontainerjson-reference" >devcontainer.json</option>
+				
+					<option value="/docs/remote/troubleshooting" >Tips and Tricks</option>
+				
+					<option value="/docs/remote/faq" >FAQ</option>
+				
+				</optgroup>
+			
+		
+			
+		
+	</select>
+</nav> </div>
+        <div class="col-sm-9 col-md-8 body">
+            <div id="confirmation" class="alert alert-success">
+                <p>
+                    <h2>Thanks for downloading VS Code<span id="os-name-text"></span>!</h2> <span class="thanks">Download not starting?  Try this <a href="#" id="direct-link">direct download link.</a></span>
+                </p>
+                <p>Please take a few seconds and help us improve ... <a href="https://go.microsoft.com/fwlink/?LinkId=808081" target="_blank">click to take survey.</a></p>
+            </div>
+            
+            
+            <div>
+                <h1>Getting Started</h1>
+                <p>Visual Studio Code is a lightweight but powerful source code editor which runs on your desktop and is available for Windows, macOS and Linux. It comes with built-in support for JavaScript, TypeScript and Node.js and has a rich ecosystem of extensions for other languages (such as C++, C#, Java, Python, PHP, Go) and runtimes (such as .NET and Unity). Begin your journey with VS Code with these <a id="docs-index-intro-videos" href="/docs/introvideos/overview">introductory videos</a>.</p>
+            </div>
+            <div>
+                <h2 id="vscode-in-action">Visual Studio Code in Action</h2>
+                <div class="carousel">
+                    <div id="wow-carousel" class="carousel slide" data-ride="carousel">
+                        <div aria-label="feature image carousel" class="carousel-inner" role="list">
+                            <div class="item active" role="listitem">
+                                <a aria-label="Learn more about IntelliSense" id="carousel-intellisense" href="/docs/editor/intellisense" class="intellisense"></a>
+                                <div class="caption">
+                                    <h3 class="title">Intelligent Code Completion</h3>
+                                    <span class="short-description">Code smarter with <a id="carousel-description-intellisense" href="/docs/editor/intellisense">IntelliSense</a> - completions for variables, methods, and imported modules.</span>
+                                </div>
+                            </div>
+                            <div class="item" role="listitem">
+                                <a aria-label="Learn more about Debugging" id="carousel-debugging" href="/docs/editor/debugging" class="debug"></a>
+                                <div class="caption">
+                                    <h3 class="title">Streamlined Debugging</h3>
+                                    <span class="short-description">Print debugging is a thing of the past. <a id="carousel-short-debug" href="/docs/editor/debugging">Debug</a> in VS Code with your terminal tools.</span>
+                                </div>
+                            </div>
+                            <div class="item" role="listitem" >
+                                <a aria-label="Learn more about powerful editing features" id="carousel-edit" href="/docs/editor/codebasics" class="edit"></a>
+                                <div class="caption">
+                                    <h3 class="title">Fast, Powerful Editing</h3>
+                                    <span class="short-description"><a href="/docs/languages/javascript#_linters">Linting</a>, <a href="/docs/editor/codebasics#_multiple-selections-multicursor">multi-cursor editing</a>, <a id="carousel-parameter-hints" href="/docs/editor/intellisense#_intellisense-features">parameter hints</a>, and other powerful editing features. 
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="item" role="listitem" >
+                                <a aria-label="Learn more about code navigation and refactoring" id="carousel-navigation" href="/docs/editor/editingevolved#_peek" class="peek"></a>
+                                <div class="caption">
+                                    <h3 class="title">Code Navigation and Refactoring</h3>
+                                    <span class="short-description">Browse your source code quickly using <a id="carousel-peek" href="/docs/editor/editingevolved#_peek">peek</a> and <a id="carousel-goto-definition" href="/docs/editor/editingevolved#_go-to-definition">navigate to definition</a>.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="item" role="listitem" >
+                                <a aria-label="Learn more about git" id="carousel-git" href="/docs/editor/versioncontrol" class="git"></a>
+                                <div class="caption">
+                                    <h3 class="title">In-Product Source Control</h3>
+                                    <span class="short-description">Speed up your release cycle with <a href="/docs/editor/versioncontrol">SCM support</a> inside your editor, including rich Git integration.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators" tabindex="0">
+                            <li aria-labelledby="carousel-intellisense" data-target="#wow-carousel" data-slide-to="0" class="active"></li>
+                            <li aria-labelledby="carousel-debugging" data-target="#wow-carousel" data-slide-to="1"></li>
+                            <li aria-labelledby="carousel-edit" data-target="#wow-carousel" data-slide-to="2"></li>
+                            <li aria-labelledby="carousel-navigation" data-target="#wow-carousel" data-slide-to="3"></li>
+                            <li aria-labelledby="carousel-git" data-target="#wow-carousel" data-slide-to="4"></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 id="top-extensions">Top Extensions</h2>
+                <p>Enable additional languages, themes, debuggers, commands, and more. VS Code's growing community shares their
+                    secret sauce to improve your workflow.</p>
+            <div class="marketplace-extensions-top"></div>
+            <p class="text-right">
+                <a href="https://marketplace.visualstudio.com/vscode" target="_blank">See more in the Marketplace</a>
+            </p>
+            
+            <div>
+                <h2 id="first-steps">First Steps</h2>
+                <p>To get the most out of Visual Studio Code, start by reviewing a few introductory topics:</p>
+                <div>
+                    <p><a id="docs-index-intro-videos-2" href="/docs/getstarted/introvideos">Intro Videos</a> - Begin your journey with VS Code through these introductory videos.</p>                    
+                    <p><a id="docs-index-setup-link" href="/docs/setup/setup-overview">Setup</a> - Install VS Code for your platform and configure the tool set for your development needs.</p>
+                    <p><a id="docs-index-codebasics-link" href="/docs/getstarted/userinterface">User Interface</a> - Introduction to the basic UI, commands, and features of the VS Code editor.</p>
+                    <p><a id="docs-index-workspaces-link" href="/docs/getstarted/settings">Settings</a> - Customize VS Code for how you like to work.</p>
+                    <p><a id="docs-index-languages-link" href="/docs/languages/overview">Languages</a> - Learn about VS Code's support for your favorite programming languages.</p>
+                    <p><a id="docs-index-nodejs-link" href="/docs/nodejs/nodejs-tutorial">Node.js</a> - This tutorial gets you quickly running and debugging a Node.js web app.</p>
+                    <p><a id="docs-index-tips-and-tricks" href="/docs/getstarted/tips-and-tricks">Tips and Tricks</a> - Jump right in with Tips and Tricks to become a VS Code power user.</p>
+                    <p><a id="docs-index-azure-link" href="/docs/azure/extensions">Azure</a> - VS Code is great for deploying your web applications to the cloud.</p>
+                    <p><a id="docs-index-community-link" href="/api">Extension API</a> - Learn how to write a VS Code extension.</p>
+                    <p><a id="docs-index-whyvscode-link" href="/docs/editor/whyvscode">Why VS Code?</a> - Read about the design philosophy and architecture of VS Code.</p>
+                </div>
+            </div>
+
+            <div>
+                <h2 id="keyboard-shortcuts">Keyboard Shortcuts</h2>
+                <p>Increase your productivity with VS Code's keyboard shortcuts.</p>
+                <div>
+                    <p><a id="docs-index-keyboard-shortcuts-reference" href="/docs/getstarted/keybindings#_keyboard-shortcuts-reference">Keyboard Shortcut Reference Sheet</a> - Learn the commonly used keyboard shortcuts.</p>
+                    <p><a id="docs-index-keymaps" href="/docs/getstarted/keybindings#_keymap-extensions">Keymap Extensions</a> - Change VS Code's keyboard shortcuts to match another editor.<p>
+                    <p><a id="docs-index-keyboard-shortcuts-customize" href="/docs/getstarted/keybindings#_keyboard-shortcuts-editor">Customize Keyboard Shortcuts</a> - Modify the default keyboard shortcuts.</p>
+                </div>
+            </div>
+
+           <div>
+                <h2 id="download">Downloads</h2>
+                    <p><a id="docs-index-download-link" href="/download">Download VS Code</a> - Quickly find the appropriate install for your platform (Windows, macOS and Linux)</p>
+                </div>
+
+            <div>
+                <h2 id="privacy">Privacy</h2>
+                <p>By default, VS Code auto-updates to new versions, and collects usage data and crash report information. You
+                    may opt out of these defaults by disabling them as instructed below:</p>
+                <div>
+                    <p><a id="docs-index-autoupdates-link" href="/docs/supporting/faq#_how-do-i-opt-out-of-vs-code-autoupdates">How do I disable auto update?</a></p>
+                    <p><a id="docs-index-crash-reporting-link" href="/docs/supporting/faq#_how-to-disable-crash-reporting">How do I disable crash reporting?</a></p>
+                    <p><a id="docs-index-disable-telemetry-link" href="/docs/supporting/faq#_how-to-disable-telemetry-reporting">How do I disable usage reporting?</a></p>
+                </div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+        <div class="hidden-xs col-sm-3 col-md-2 docs-subnavbar-container">
+            <nav id="docs-subnavbar" aria-label="On Page" data-spy="affix" data-offset-top="20">
+                <h4>Getting Started</h4>
+                <ul class="nav">
+                	<li><a id="docs-index-nav-vscode-in-action-link" href="#vscode-in-action">VS Code in Action</a></li>
+                    <li><a id="docs-index-nav-top-extensions-link" href="#top-extensions">Top Extensions</a></li>
+                    <li><a id="docs-index-nav-firststeps-link" href="#first-steps">First Steps</a></li>
+                    <li><a id="docs-index-nav-shortcuts-link" href="#keyboard-shortcuts">Keyboard Shortcuts</a></li>
+                    <li><a id="docs-index-nav-downloads-link" href="#download">Downloads</a></li>
+                    <li><a id="docs-index-nav-privacy-link" href="#privacy">Privacy</a></li>
+                </ul>
+                <div class="connect-widget"></div>
+            </nav>
+        </div>
+    </div>
+</div>
+      </div>
+  </div>
+
+  <footer role="contentinfo">
+      <div class="container">
+          <div class="row">
+              <div class="left col-md-7">
+                  <ul class="links">
+                      <li>
+                          <span class="message">Hello from Seattle.</span>
+                      </li>
+                      <li>
+                          <a href="https://go.microsoft.com/fwlink/?LinkID=533687" onclick="followOnTwitter()" role="button" tabindex="0">Follow @code</a>
+                      </li>
+                      <li>
+                          <div class="github-star-button">
+                              <iframe src="/assets/github-button.html?user=Microsoft&repo=vscode&type=star&count=true"
+                                  frameborder="0" scrolling="0" width="130px" height="20px" title="GitHub follow button" aria-label="GitHub follow button"></iframe>
+                          </div>
+                      </li>
+  
+                      <script>
+                          function followOnTwitter() {
+                              var windowFeatures = "location=yes,height=600,width=550,scrollbars=yes,status=yes";
+                              var originalReferer = "&original_referer=" + document.URL;
+                              var screenName = "&screen_name=code";
+                              var URL = "https://twitter.com/intent/follow?" + originalReferer + screenName;
+                              window.open(URL, "_blank", windowFeatures);
+                          }
+                      </script>
+                  </ul>
+              </div>
+              <div class="right col-md-5">
+                  <ul class="links">
+                      <li><a id="footer-support-link" href="https://support.microsoft.com/en-us/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16064&ccsid=636196895839595242"
+                              target="_blank">Support</a></li>
+                      <li><a id="footer-privacy-link" href="https://privacy.microsoft.com/en-us/privacystatement"
+                              target="_blank">Privacy</a></li>
+                      <li><a id="footer-terms-link" href="https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx"
+                              target="_blank">Terms of Use</a></li>
+                      <li><a id="footer-license-link" href="/License">License</a></li>
+                  </ul>
+                  <div class="copyright">
+                      <a id="footer-microsoft-link" class="logo" href="https://www.microsoft.com">
+                          <img class="microsoft-logo" src="/assets/images/microsoft-logo.png" height="20" alt="Microsoft homepage"/>
+                          <img class="microsoft-logo-inverted" src="/assets/images/microsoft-logo-inverted.png" height="20" alt="Microsoft homepage" />
+                      </a>
+                      <span>&copy; 2020 <span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+  <span itemprop="name">Microsoft</span></span>
+                      </span>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </footer>
+  <script src="/dist/index.js"></script>
+
+  
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Product",
+      "name" : "Visual Studio Code",
+      "logo": "https://code.visualstudio.com/assets/favicon.ico",
+      "url" : "https://code.visualstudio.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://code.visualstudio.com/Search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "sameAs" : [
+      "https://en.wikipedia.org/wiki/Visual_Studio_Code",
+      "https://www.facebook.com/visualstudio",
+      "https://twitter.com/code",
+      "https://blogs.msdn.com/b/vscode"
+      ]
+    }
+  </script>
+
+  <!-- [Begin] JSLL script includes -->
+  
+  <script type="text/javascript">
+    var config = {
+      coreData: {
+        appId: "vscode"
+      }
+    };
+    if (awa) {
+      awa.init(config);
+    }
+  </script>
+  <!-- [End] JSLL script includes --></body>
+</html>

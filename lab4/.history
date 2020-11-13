@@ -1,0 +1,9 @@
+exit
+!5
+ls
+clear
+mkdir folder
+ls -al
+ls
+exit
+ls

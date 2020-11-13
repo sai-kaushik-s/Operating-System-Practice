@@ -1,0 +1,14 @@
+for((i=1; i <=50; i++))
+do
+    if [ $i -lt 10 ]
+    then
+     						   echo -n "COE18B00";
+    else
+        echo -n "COE18I0";
+    fi
+    rem=$(( $i % 2 ))
+    if [ $rem -eq 0 ]
+    then
+        echo "$i";
+    fi
+done
